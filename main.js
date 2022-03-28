@@ -41,8 +41,5 @@ console.log(lang[1]);
 
 let namePerson = prompt('Напишите имя', 'Имя');
 
-namePerson =
-  (namePerson == 'Артем') ? 'Директор' :
-  (namePerson == 'Александр') ? 'Преподаватель' : 'Cтудент';
-
-console.log(namePerson);
+(namePerson == 'Артем') ? console.log('Директор'):
+  (namePerson == 'Александр') ? console.log('Преподаватель') : console.log('Cтудент');
