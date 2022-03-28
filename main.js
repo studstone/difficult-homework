@@ -7,20 +7,18 @@ console.log(productNum);
 const degreeNum = productNum ** 3;
 console.log(String(degreeNum).slice(0, 2));
 
-let lang;
-let dayWeekRu = 'Понедельник, вторник, среда, четверг, пятница, суббота, воскресенье';
-let dayWeekEn = 'Monday , Tuesday , Wednesday , Thursday , Friday , Saturday , Sunday';
+let lang = prompt('Какой язык используете на сайте?', 'ru/en');
+const dayWeekRu = 'Понедельник, вторник, среда, четверг, пятница, суббота, воскресенье';
+const dayWeekEn = 'Monday , Tuesday , Wednesday , Thursday , Friday , Saturday , Sunday';
 
-lang = prompt('Какой язык используете на сайте?', 'ru/en');
-if (lang == 'ru') {
+if (lang === 'ru') {
   console.log(dayWeekRu);
-} else if (lang == 'en') {
+} else if (lang === 'en') {
   console.log(dayWeekEn);
 } else {
   console.log('Язык выбран некорректно');
 }
 
-lang = prompt('Какой язык используете на сайте?', 'ru/en');
 switch (lang) {
   case 'ru':
     console.log(dayWeekRu);
@@ -41,9 +39,7 @@ lang = [
 console.log(lang[0]);
 console.log(lang[1]);
 
-let namePerson;
-
-namePerson = prompt('Напишите имя', 'Имя');
+let namePerson = prompt('Напишите имя', 'Имя');
 
 namePerson =
   (namePerson == 'Артем') ? 'Директор' :
