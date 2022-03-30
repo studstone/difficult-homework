@@ -12,6 +12,17 @@ console.log(String(degreeNum).slice(0, 2));
 let lang = prompt('Какой язык используете на сайте?', 'ru/en');
 const dayWeekRu = 'Понедельник, вторник, среда, четверг, пятница, суббота, воскресенье';
 const dayWeekEn = 'Monday , Tuesday , Wednesday , Thursday , Friday , Saturday , Sunday';
+const title = 'sadfghfdsfghfjdsfgdhfjgdghfdfghjfdfghgjfdsfghfdfgfdsfgfd';
+
+function getTitle(str) {
+  if (typeof str !== 'string') {
+    alert('аргумент не строка');
+    return;
+  }
+
+  str = str.trim();
+  return str.length > 30 ? str.slice(0, 30) + '...' : str;
+}
 
 if (lang === 'ru') {
   console.log(dayWeekRu);
@@ -45,3 +56,5 @@ let namePerson = prompt('Напишите имя', 'Имя');
 
 (namePerson == 'Артем') ? console.log('Директор'):
   (namePerson == 'Александр') ? console.log('Преподаватель') : console.log('Cтудент');
+
+console.log(getTitle(title));
