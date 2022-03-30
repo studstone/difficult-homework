@@ -1,3 +1,5 @@
+'use strict';
+
 const num = 266219;
 console.log(typeof num);
 const splitNum = (num).toString().split("");
