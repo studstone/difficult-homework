@@ -58,3 +58,22 @@ let namePerson = prompt('Напишите имя', 'Имя');
   (namePerson == 'Александр') ? console.log('Преподаватель') : console.log('Cтудент');
 
 console.log(getTitle(title));
+
+let arr = ['32', '27', '755', '104', '47', '78', '377'];
+let n = 100;
+
+for (let i = 0; i < 7; i++) {
+  if (arr[i].startsWith('2') || arr[i].startsWith('4')) {
+    console.log(arr[i]);
+  }
+}
+
+nextPrime:
+  for (let i = 2; i <= n; i++) {
+
+    for (let j = 2; j < i; j++) {
+      if (i % j == 0) continue nextPrime;
+    }
+
+    console.log(i + ' Делитель этого числа 1 и ' + i);
+  }
