@@ -12,6 +12,17 @@ console.log(String(degreeNum).slice(0, 2));
 let lang = prompt('Какой язык используете на сайте?', 'ru/en');
 const dayWeekRu = 'Понедельник, вторник, среда, четверг, пятница, суббота, воскресенье';
 const dayWeekEn = 'Monday , Tuesday , Wednesday , Thursday , Friday , Saturday , Sunday';
+const title = 'sadfghfdsfghfjdsfgdhfjgdghfdfghjfdfghgjfdsfghfdfgfdsfgfd';
+
+function getTitle(str) {
+  if (typeof str !== 'string') {
+    alert('аргумент не строка');
+    return;
+  }
+
+  str = str.trim();
+  return str.length > 30 ? str.slice(0, 30) + '...' : str;
+}
 
 if (lang === 'ru') {
   console.log(dayWeekRu);
@@ -45,3 +56,24 @@ let namePerson = prompt('Напишите имя', 'Имя');
 
 (namePerson == 'Артем') ? console.log('Директор'):
   (namePerson == 'Александр') ? console.log('Преподаватель') : console.log('Cтудент');
+
+console.log(getTitle(title));
+
+let arr = ['32', '27', '755', '104', '47', '78', '377'];
+let n = 100;
+
+for (let i = 0; i < 7; i++) {
+  if (arr[i].startsWith('2') || arr[i].startsWith('4')) {
+    console.log(arr[i]);
+  }
+}
+
+nextPrime:
+  for (let i = 2; i <= n; i++) {
+
+    for (let j = 2; j < i; j++) {
+      if (i % j == 0) continue nextPrime;
+    }
+
+    console.log(i + ' Делитель этого числа 1 и ' + i);
+  }
