@@ -9,8 +9,7 @@ const days = function () {
     if (i === +todayDay.getDay() - 1) {
       newdiv.classList.add('today');
       newdiv.textContent = week[i];
-    }
-    if (item == 'Суббота' || item == 'Воскресенье') {
+    } else if (item == 'Суббота' || item == 'Воскресенье') {
       newdiv.classList.add('italic');
       newdiv.textContent = week[i];
     } else {
@@ -21,4 +20,3 @@ const days = function () {
   });
 };
 days();
-console.log(days);
