@@ -2,7 +2,7 @@
 
 const daysFirst = function () {
   const weekRu = 'Понедельник, Вторник, Среда, Четверг, Пятница, Суббота, Воскресенье'.split(',');
-  const monthRu = 'января, февраля, марта, апреля, мая, июня, июля, августа, сентября, октября, ноября, декабря'.split(',');
+  const monthRu = 'января, февраля, марта, апреля,мая, июня, июля, августа, сентября, октября, ноября, декабря'.split(', ');
   const todayDay = new Date();
   let year = todayDay.getFullYear();
   let month = monthRu[todayDay.getMonth()];
@@ -44,7 +44,7 @@ const daysFirst = function () {
   };
 
   const declinationSeconds = function (seconds) {
-    const str = 'минут';
+    const str = 'секунд';
     if (seconds === 1 || seconds === 21 || seconds === 31 || seconds === 41 || seconds === 51) {
       return `${seconds} ${str}а`;
     }
