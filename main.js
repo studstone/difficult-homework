@@ -1,47 +1,66 @@
 'use strict';
+const weekRu = 'Понедельник, Вторник, Среда, Четверг, Пятница, Суббота, Воскресенье'.split(',');
+const monthRu = 'января, февраля, марта, апреля, мая, июня, июля, августа, сентября, октября, ноября, декабря'.split(',');
 
-const num = 266219;
-console.log(typeof num);
-const splitNum = (num).toString().split("");
-console.log(splitNum);
-const productNum = splitNum.reduce((acc, rec) => acc * rec);
-console.log(productNum);
-const degreeNum = productNum ** 3;
-console.log(String(degreeNum).slice(0, 2));
+const todayDay = new Date();
+let year = todayDay.getFullYear();
+let month = monthRu[todayDay.getMonth()];
+let monthNumber = todayDay.getMonth() + 1;
+let day = +todayDay.getDay() - 1;
+let week = weekRu[day];
+let data = todayDay.getDate();
+let hour = todayDay.getHours();
+let minutes = todayDay.getMinutes();
+let seconds = todayDay.getSeconds();
+const fullDate = data + ' ' + month + ' ' + year + ' года ';
+let time = '';
+const divVariantFirst = document.getElementById('div-variant-first');
 
-let lang = prompt('Какой язык используете на сайте?', 'ru/en');
-const dayWeekRu = 'Понедельник, вторник, среда, четверг, пятница, суббота, воскресенье';
-const dayWeekEn = 'Monday , Tuesday , Wednesday , Thursday , Friday , Saturday , Sunday';
+const declinationTime = function () {
+  if (hour === 1 || hour === 21) {
+    time = hour + ' час ' + minutes + ' минут ' + seconds + ' секунд';
+  }
+  if (hour >= 2 || hour <= 4 || hour === 22 || hour === 23) {
+    time = hour + ' часа ' + minutes + ' минут ' + seconds + ' секунд';
+  }
+  if (hour === 0 || hour >= 5 || hour <= 20) {
+    time = hour + ' часов ' + minutes + ' минут ' + seconds + ' секунд';
+  }
+};
 
-if (lang === 'ru') {
-  console.log(dayWeekRu);
-} else if (lang === 'en') {
-  console.log(dayWeekEn);
-} else {
-  console.log('Язык выбран некорректно');
-}
+const days = function () {
+  if (day === -1) {
+    day = 6;
+    divVariantFirst.textContent = 'Сегодня ' + week + ', ' + fullDate + ', ' + time;
+  } else {
+    divVariantFirst.textContent = 'Сегодня ' + week + ', ' + fullDate + ', ' + time;
+  }
+  setTimeout(days, 1000);
+};
 
-switch (lang) {
-  case 'ru':
-    console.log(dayWeekRu);
-    break;
-  case 'en':
-    console.log(dayWeekEn);
-    break;
-  default:
-    console.log('Язык выбран некорректно');
-    break;
-}
+declinationTime();
+days();
 
-lang = [
-  ['Понедельник', 'вторник', 'среда', 'четверг', 'пятница', 'суббота', 'воскресенье'],
-  ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
-];
 
-console.log(lang[0]);
-console.log(lang[1]);
+const divVariantSecond = document.getElementById('div-variant-second');
 
-let namePerson = prompt('Напишите имя', 'Имя');
-
-(namePerson == 'Артем') ? console.log('Директор'):
-  (namePerson == 'Александр') ? console.log('Преподаватель') : console.log('Cтудент');
+const addZero = function () {
+  if (hour <= 9) {
+    hour += '0' + hour;
+  }
+  if (minutes <= 9) {
+    minutes = '0' + minutes;
+  }
+  if (seconds <= 9) {
+    seconds = '0' + seconds;
+  }
+  if (data <= 9) {
+    data = '0' + data;
+  }
+  if (monthNumber <= 9) {
+    monthNumber = '0' + monthNumber;
+  }
+  divVariantSecond.textContent = hour + ':' + minutes + ':' + seconds + ' - ' + data + '.' + monthNumber + '.' + year;
+  // setTimeout(addZero, 1000);
+};
+addZero();
