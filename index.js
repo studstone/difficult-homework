@@ -10,17 +10,16 @@ const addInnerHtml = (div, obj) => {
     } else {
         div.innerHTML = '<p>Выбери тачку </p>';
     }
-
 };
 
-const fetchCarInfo = (brand, div) => fetch('./cars.json', {
+const fetchCarInfo = brand => fetch('./cars.json', {
     method: 'GET',
     headers: {
         'Content-Type': 'application/json'
     }
 }).then(res => res.json())
     .then(data => findCarInfo(data.cars, brand))
-    .then(data => addInnerHtml(div, data))
+    .then(data => addInnerHtml(divBlock, data))
     .catch(error => console.log(error));
 
 
@@ -28,7 +27,7 @@ addInnerHtml(divBlock);
 
 select.addEventListener('change', e => {
     const brand = e.target.options[e.target.selectedIndex].text;
-    fetchCarInfo(brand, divBlock);
+    fetchCarInfo(brand);
 });
 
 
